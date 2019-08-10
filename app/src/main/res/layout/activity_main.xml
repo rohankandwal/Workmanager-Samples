@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".main.home.MainActivity">
+
+    <Button
+            android:id="@+id/bt_one_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="One time request"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+            android:id="@+id/bt_periodic_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Periodic Request"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_one_time"/>
+
+    <Button
+            android:id="@+id/bt_start_dagger_injection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Dagger Injection Activity"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_periodic_request"/>
+    <Button
+            android:id="@+id/bt_rx_worker_example"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RxWorker"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_start_dagger_injection"/>
+<Button
+            android:id="@+id/bt_coroutine_worker_example"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Coroutine Worker"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_rx_worker_example"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

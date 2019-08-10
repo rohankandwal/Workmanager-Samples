@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+          package="com.itcse.workmanagersample">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
+            android:name="android.permission.PACKAGE_USAGE_STATS"
+            tools:ignore="ProtectedPermissions"/>
+
+    <application
+            android:name=".main.SampleApplication"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+        <activity android:name=".main.home.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".main.one_time.BlurActivity"
+                  android:screenOrientation="portrait" />
+
+        <activity android:name=".main.one_time.OneTimeActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name=".main.dagger_injection.DaggerInjectionActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name=".main.periodic_time.PeriodicTimeActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name=".main.worker.rxworker.RxWorkerExampleActivity"
+                  android:screenOrientation="portrait" />
+
+        <activity android:name=".main.worker.coroutineworker.CoroutineWorkerExampleActivity"
+                  android:screenOrientation="portrait" />
+
+        <provider
+                android:name="androidx.work.impl.WorkManagerInitializer"
+                android:authorities="${applicationId}.workmanager-init"
+                android:exported="false"
+                tools:node="remove"/>
+    </application>
+
+</manifest>
