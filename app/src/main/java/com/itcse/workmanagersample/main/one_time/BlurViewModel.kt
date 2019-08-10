@@ -54,6 +54,7 @@ class BlurViewModel(application: Application) : AndroidViewModel(application) {
      * @param blurLevel The amount to blur the image
      */
     internal fun applyBlur(blurLevel: Int) {
+        workManager.beginWith(OneTimeWorkRequest.from(CleanupWorker::class.java)).enqueue()
 
         // Add WorkRequest to Cleanup temporary images
         var continuation = workManager
