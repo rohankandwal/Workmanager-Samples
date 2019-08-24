@@ -17,6 +17,10 @@ import com.itcse.workmanagersample.main.periodic_time.utils.Constants
 class BatteryUsageWorker(context: Context, params: WorkerParameters) : Worker(context, params) {
 
     override fun doWork(): Result {
+        // If the Worker was stopped we send failure
+        if (isStopped) {
+            return Result.failure()
+        }
         val isNeeded = inputData.getBoolean(Constants.BATTERY_STAT, false)
 
         if (isNeeded) {
@@ -25,7 +29,7 @@ class BatteryUsageWorker(context: Context, params: WorkerParameters) : Worker(co
             val level = batteryStatus?.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
             val scale = batteryStatus?.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
             val batteryPercent = level?.div(scale?.toFloat() ?: 0f)
-            Result.success(createOutputData(batteryPercent))
+            return Result.success(createOutputData(batteryPercent))
         }
         return Result.success()
     }

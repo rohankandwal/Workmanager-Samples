@@ -26,6 +26,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    // For projects with Kotlin where kapt is used
+//    kapt {
+//        arguments {
+//            arg ("dagger.formatGeneratedSource", "disabled")
+//            arg ("dagger.gradle.incremental", "enabled")
+//            }
+//    }
 }
 versions.work = "2.1.0"
 

@@ -23,6 +23,10 @@ import com.itcse.workmanagersample.main.periodic_time.utils.Constants
 class NetworkUsageWorker(context: Context, params: WorkerParameters) : Worker(context, params) {
 
     override fun doWork(): Result {
+        // If the Worker was stopped we send failure
+        if (isStopped) {
+            return Result.failure()
+        }
         val isNeeded = inputData.getBoolean(Constants.NET_STAT, false)
 
         if (isNeeded) {

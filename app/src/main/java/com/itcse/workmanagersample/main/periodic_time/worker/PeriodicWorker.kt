@@ -3,11 +3,12 @@ package com.itcse.workmanagersample.main.periodic_time.worker
 import android.content.Context
 import androidx.work.*
 import com.itcse.workmanagersample.main.periodic_time.PeriodicTimeActivity
+import com.itcse.workmanagersample.main.periodic_time.utils.Constants
 
 /**
  * @author Rohan Kandwal on 2019-08-10.
  */
-class PeriodicWorker(val context: Context, val workerParameters: WorkerParameters): Worker(context, workerParameters) {
+class PeriodicWorker(val context: Context, val workerParameters: WorkerParameters) : Worker(context, workerParameters) {
 
     private val TAG_UNIQUE_WORK_NAME = "APP_USAGE_ANALYTIC_MANAGER"
 
@@ -44,6 +45,10 @@ class PeriodicWorker(val context: Context, val workerParameters: WorkerParameter
             .then(reportBuilder.build())  // Chaining the analytics request to server reporting
             .enqueue() // Finally, Don't forget to schedule your work :)
 
+        // If the Worker was stopped we send failure
+        if (isStopped) {
+            return Result.failure()
+        }
         return Result.success()
     }
 }

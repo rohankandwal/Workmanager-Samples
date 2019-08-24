@@ -19,6 +19,10 @@ class GetConfigWorker(context: Context, params: WorkerParameters) : Worker(conte
     private var configResponse : ConfigResponse? = null
 
     override fun doWork(): Result {
+        // If the Worker was stopped we send failure
+        if (isStopped) {
+            return Result.failure()
+        }
         try {
             configResponse = SampleApplication.thisApplication.apiHelper.config
             return Result.success(createOutputData(configResponse))
