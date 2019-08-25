@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-          package="com.itcse.workmanagersample">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        package="com.itcse.workmanagersample">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -8,7 +9,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission
             android:name="android.permission.PACKAGE_USAGE_STATS"
-            tools:ignore="ProtectedPermissions"/>
+            tools:ignore="ProtectedPermissions" />
 
     <application
             android:name=".main.SampleApplication"
@@ -20,32 +21,41 @@
             android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".main.home.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".main.one_time.BlurActivity"
-                  android:screenOrientation="portrait" />
+        <activity
+                android:name=".main.one_time.BlurActivity"
+                android:screenOrientation="portrait" />
 
-        <activity android:name=".main.one_time.OneTimeActivity"
-                  android:screenOrientation="portrait" />
-        <activity android:name=".main.dagger_injection.DaggerInjectionActivity"
-                  android:screenOrientation="portrait" />
-        <activity android:name=".main.periodic_time.PeriodicTimeActivity"
-                  android:screenOrientation="portrait" />
-        <activity android:name=".main.worker.rxworker.RxWorkerExampleActivity"
-                  android:screenOrientation="portrait" />
+        <activity
+                android:name=".main.one_time.OneTimeActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".main.dagger_injection.DaggerInjectionActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".main.periodic_time.PeriodicTimeActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".main.worker.rxworker.RxWorkerExampleActivity"
+                android:screenOrientation="portrait" />
 
-        <activity android:name=".main.worker.coroutineworker.CoroutineWorkerExampleActivity"
-                  android:screenOrientation="portrait" />
+        <activity
+                android:name=".main.worker.coroutineworker.CoroutineWorkerExampleActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".main.worker.listenable_worker.ListenableWorkerActivity"
+                android:screenOrientation="portrait" />
 
         <provider
                 android:name="androidx.work.impl.WorkManagerInitializer"
                 android:authorities="${applicationId}.workmanager-init"
                 android:exported="false"
-                tools:node="remove"/>
+                tools:node="remove" />
     </application>
 
 </manifest>
