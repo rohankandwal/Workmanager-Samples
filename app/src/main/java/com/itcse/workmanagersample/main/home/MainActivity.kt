@@ -8,6 +8,8 @@ import com.itcse.workmanagersample.main.dagger_injection.DaggerInjectionActivity
 import com.itcse.workmanagersample.main.one_time.OneTimeActivity
 import com.itcse.workmanagersample.main.periodic_time.PeriodicTimeActivity
 import com.itcse.workmanagersample.main.worker.coroutineworker.CoroutineWorkerExampleActivity
+import com.itcse.workmanagersample.main.worker.listenable_worker.ListenableWorkerActivity
+import com.itcse.workmanagersample.main.worker.listenable_worker.ListenableWorkerExample
 import com.itcse.workmanagersample.main.worker.rxworker.RxWorkerExampleActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,6 +32,9 @@ class MainActivity : AppCompatActivity() {
 
         bt_start_dagger_injection.setOnClickListener {
             startActivity(Intent(this, DaggerInjectionActivity::class.java))
+        }
+        bt_listenable_worker.setOnClickListener {
+            startActivity(Intent(this, ListenableWorkerActivity::class.java))
         }
         bt_rx_worker_example.setOnClickListener {
             startActivity(Intent(this, RxWorkerExampleActivity::class.java))
