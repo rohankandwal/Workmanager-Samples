@@ -17,6 +17,10 @@ import java.io.IOException
 class ReportToServerWorker(context: Context,  params: WorkerParameters) : Worker(context, params) {
 
     override fun doWork(): Result {
+        // If the Worker was stopped we send failure
+        if (isStopped) {
+            return Result.failure()
+        }
         return try {
             val batteryStat = inputData.getString(Constants.BATTERY_PERCENTAGE) ?: "UNKNOWN"
             val netStat = inputData.getLong(Constants.NETWORK_USAGE, 0)
