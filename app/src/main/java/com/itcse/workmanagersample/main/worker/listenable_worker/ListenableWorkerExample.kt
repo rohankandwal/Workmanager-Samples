@@ -8,14 +8,6 @@ import com.google.common.util.concurrent.ListenableFuture
 import okhttp3.*
 import timber.log.Timber
 import java.io.IOException
-import com.sun.xml.internal.ws.streaming.XMLStreamWriterUtil.getOutputStream
-import sun.text.normalizer.UTF16.append
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.net.HttpURLConnection
-import java.net.URL
-import java.net.URLEncoder
-
 
 /**
  * Example of a Listenable Worker.

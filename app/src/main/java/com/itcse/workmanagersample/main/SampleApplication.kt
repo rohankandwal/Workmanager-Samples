@@ -1,14 +1,9 @@
 package com.itcse.workmanagersample.main
 
 import android.app.Application
-import android.widget.Toast
 import androidx.work.Configuration
-import androidx.work.WorkManager
 import com.itcse.workmanagersample.BuildConfig
-import com.itcse.workmanagersample.main.dagger_injection.di.DaggerSampleComponent
-import com.itcse.workmanagersample.main.dagger_injection.factory.SampleWorkerFactory
 import com.itcse.workmanagersample.main.periodic_time.RemoteApi
-import com.itcse.workmanagersample.main.periodic_time.data.Analytics
 import com.itcse.workmanagersample.main.periodic_time.netwok.ApiHelper
 import com.itcse.workmanagersample.main.periodic_time.netwok.MockClient
 import okhttp3.Interceptor
@@ -23,12 +18,21 @@ import timber.log.Timber
  *
  * @author Rohan Kandwal on 2019-08-04.
  */
-class SampleApplication : Application() {
-
+class SampleApplication : Application(), Configuration.Provider {
     companion object {
+
         lateinit var thisApplication: SampleApplication
             private set
     }
+
+    /**
+     * On-demand initialization lets you initialize WorkManager only when that component is needed,
+     * instead of every time the app starts up. Doing so moves WorkManager off your critical startup
+     * path, improving app startup performance.
+     */
+    override fun getWorkManagerConfiguration() = Configuration.Builder()
+        .setMinimumLoggingLevel(android.util.Log.INFO)
+        .build()
 
     private lateinit var remoteApi: RemoteApi
 

@@ -10,25 +10,28 @@ import androidx.work.WorkManager
 import com.itcse.workmanagersample.R
 import kotlinx.android.synthetic.main.activity_listenable_worker.*
 import timber.log.Timber
-import java.lang.Exception
 
 /**
  * Listenable worker is used to work on tasks for Listenable Future
  *
  * @author Rohan Kandwal on 2019-08-25.
  */
-class ListenableWorkerActivity: AppCompatActivity() {
+class ListenableWorkerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listenable_worker)
+
+        // Since we have different types of worker, both default and custom one, we
         try {
             WorkManager.initialize(this, Configuration.Builder().build())
         } catch (e: Exception) {
+            e.printStackTrace()
         }
         val request = OneTimeWorkRequestBuilder<ListenableWorkerExample>().build()
 
         bt_start_work.setOnClickListener {
+            // On demand initialization
             WorkManager.getInstance(this).enqueue(request)
         }
 

@@ -36,7 +36,12 @@ class PeriodicTimeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_periodic_time)
 
-        WorkManager.initialize(this, Configuration.Builder().build())
+        // Since we have different types of worker, both default and custom one, we
+        try {
+            WorkManager.initialize(this, Configuration.Builder().build())
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         // This makes sure that whenever the current workId changes the WorkStatus
         // the UI is listening to changes
         bt_star_periodic_work.setOnClickListener {

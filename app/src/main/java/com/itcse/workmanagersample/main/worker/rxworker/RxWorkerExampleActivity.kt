@@ -21,7 +21,12 @@ class RxWorkerExampleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rx_worker)
 
-        WorkManager.initialize(this, Configuration.Builder().build())
+        // Since we have different types of worker, both default and custom one, we
+        try {
+            WorkManager.initialize(this, Configuration.Builder().build())
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
         val request = OneTimeWorkRequestBuilder<RxWorkerExample>().build()
 
